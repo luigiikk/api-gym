@@ -13,6 +13,7 @@
   "description": "",
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22.13.5",
     "prisma": "^6.4.1",
     "tsup": "^8.3.6",
@@ -21,6 +22,7 @@
   },
   "dependencies": {
     "@prisma/client": "^6.4.1",
+    "bcryptjs": "^3.0.2",
     "biome": "^0.3.3",
     "dotenv": "^16.4.7",
     "fastify": "^5.2.1",
