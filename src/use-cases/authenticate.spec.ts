@@ -26,7 +26,7 @@ describe('Authenticate Use Case', () => {
     expect(user.id).toEqual(expect.any(String))
   })
   it('should not be able to authenticate with wrong email', async () => {
-    expect(() =>
+    await expect(() =>
       authenticateUseCase.execute({
         email: 'johndoe@example.com',
         password: '123456',
@@ -34,14 +34,13 @@ describe('Authenticate Use Case', () => {
     ).rejects.instanceOf(InvalidCredentialsError)
   })
   it('should not be able to authenticate with wrong password', async () => {
-    
     await usersReposity.create({
       name: 'John Doe',
       email: 'jhondoe@example.com',
       password_hash: await hash('123456', 6),
     })
 
-    expect(() =>
+    await expect(() =>
       authenticateUseCase.execute({
         email: 'johndoe@example.com',
         password: '123123',
