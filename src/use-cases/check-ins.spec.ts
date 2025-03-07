@@ -4,6 +4,7 @@ import { InMemoryCheckInsRepository } from '../repositories/in-memory/in-memory-
 import { InMemoryGymsRepository } from '../repositories/in-memory/in-memory-gyms-repository'
 import { CheckInUseCase } from './checkin'
 import { MaxNumberChekckInsError } from './errors/max-number-check-ins-error'
+import { MaxDistanceError } from './errors/max-distance-error'
 
 let checkInsrespository: InMemoryCheckInsRepository
 let gymsRepository: InMemoryGymsRepository
@@ -92,6 +93,6 @@ describe('Get User Profile Use Case', () => {
         UserLatitude: -12.894208,
         UserLongitude: -38.404096,
       })
-    ).rejects.toBeInstanceOf(MaxNumberChekckInsError)
+    ).rejects.toBeInstanceOf(MaxDistanceError)
   })
 })
