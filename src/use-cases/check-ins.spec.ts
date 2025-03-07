@@ -8,20 +8,19 @@ let checkInsrespository: InMemoryCheckInsRepository
 let gymsRepository: InMemoryGymsRepository
 let checkInUseCase: CheckInUseCase
 describe('Get User Profile Use Case', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     checkInsrespository = new InMemoryCheckInsRepository()
     gymsRepository = new InMemoryGymsRepository()
     checkInUseCase = new CheckInUseCase(checkInsrespository, gymsRepository)
 
-    gymsRepository.items.push({
+    await gymsRepository.create({
       id: 'gym-01',
       title: 'gym',
       description: '',
       phone: '',
-      latitude: new Decimal(0),
-      longitude: new Decimal(0),
+      latitude: 0,
+      longitude: 0,
     })
-
     vi.useFakeTimers()
   })
 
