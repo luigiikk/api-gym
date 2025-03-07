@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { InMemoryCheckInsRepository } from '../repositories/in-memory/in-memory-check-ins-repository'
 import { InMemoryGymsRepository } from '../repositories/in-memory/in-memory-gyms-repository'
 import { CheckInUseCase } from './checkin'
+import { MaxNumberChekckInsError } from './errors/max-number-check-ins-error'
 
 let checkInsrespository: InMemoryCheckInsRepository
 let gymsRepository: InMemoryGymsRepository
@@ -54,7 +55,7 @@ describe('Get User Profile Use Case', () => {
         UserLatitude: 0,
         UserLongitude: 0,
       })
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(MaxNumberChekckInsError)
   })
   it('should be able to check in twice but in different days', async () => {
     vi.setSystemTime(new Date(2022, 0, 20, 8, 0, 0))
@@ -91,6 +92,6 @@ describe('Get User Profile Use Case', () => {
         UserLatitude: -12.894208,
         UserLongitude: -38.404096,
       })
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(MaxNumberChekckInsError)
   })
 })
